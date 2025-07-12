@@ -188,7 +188,3 @@ class WebPage(object):
 
         # Go up:
         self._web_driver.execute_script('window.scrollTo(document.body.scrollHeight, 0);')
-
-
-class BasePage:
-    pass
