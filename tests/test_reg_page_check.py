@@ -4,7 +4,7 @@ import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from reg_page import RegPage
+from pages.reg_page import RegPage
 
 
 @pytest.fixture(scope="function")
@@ -22,32 +22,32 @@ def test_reg_page_check_all_fields_text(reg_page):
     password_span_xpath = "//*[@id='page-right']/div/div[1]/div/form/div[4]/div[1]/div/span[2]"
     confirm_password_span_xpath = "//*[@id='page-right']/div/div[1]/div/form/div[4]/div[2]/div/span[2]"
 
-    first_name_span = WebDriverWait(reg_page._web_driver, 10).until(
+    first_name_span = WebDriverWait(reg_page._web_driver, 3).until(
         EC.presence_of_element_located((By.XPATH, first_name_span_xpath))
     )
     assert first_name_span.text == "Имя"
 
-    second_name_span = WebDriverWait(reg_page._web_driver, 10).until(
+    second_name_span = WebDriverWait(reg_page._web_driver, 3).until(
         EC.presence_of_element_located((By.XPATH, second_name_span_xpath))
     )
     assert second_name_span.text == "Фамилия"
 
-    region_span = WebDriverWait(reg_page._web_driver, 10).until(
+    region_span = WebDriverWait(reg_page._web_driver, 3).until(
         EC.presence_of_element_located((By.XPATH, region_span_xpath))
     )
     assert region_span.text == "Регион"
 
-    email_or_phone_span = WebDriverWait(reg_page._web_driver, 10).until(
+    email_or_phone_span = WebDriverWait(reg_page._web_driver, 3).until(
         EC.presence_of_element_located((By.XPATH, email_or_phone_span_xpath))
     )
     assert email_or_phone_span.text == "E-mail или мобильный телефон"
 
-    password_span = WebDriverWait(reg_page._web_driver, 10).until(
+    password_span = WebDriverWait(reg_page._web_driver, 3).until(
         EC.presence_of_element_located((By.XPATH, password_span_xpath))
     )
     assert password_span.text == "Пароль"
 
-    confirm_password_span = WebDriverWait(reg_page._web_driver, 10).until(
+    confirm_password_span = WebDriverWait(reg_page._web_driver, 3).until(
         EC.presence_of_element_located((By.XPATH, confirm_password_span_xpath))
     )
     assert confirm_password_span.text == "Подтверждение пароля"
