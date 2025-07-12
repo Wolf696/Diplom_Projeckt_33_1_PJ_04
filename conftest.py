@@ -1,3 +1,4 @@
+
 #!/usr/bin/python3
 # -*- encoding=utf8 -*-
 
@@ -5,41 +6,11 @@
 # and make screenshots after any failed test case.
 
 import os
-from venv import logger
-
 import pytest
 import uuid
 import allure
-import logging
 from selenium import webdriver
-from pages.auth_page import AuthPage
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
-
-@pytest.fixture
-def valid_email():
-    return "valid_test@example.com"
-
-@pytest.fixture
-def valid_phone():
-    return "+79123456789"
-
-@pytest.fixture
-def invalid_email():
-    return "invalid_email@test"  # Некорректный email без домена
-
-@pytest.fixture
-def invalid_phone():
-    return "123456"  # Некорректный номер телефона
-
-@pytest.fixture
-def valid_password():
-    return "ValidPass123"
-
-@pytest.fixture
-def invalid_password():
-    return "123"  # Слишком короткий пароль
 
 @pytest.fixture(scope="function")
 def chrome_browser_instance(request):
@@ -166,9 +137,3 @@ def pytest_collection_finish(session):
                 print(full_name)
 
         pytest.exit('Done!')
-
-@pytest.fixture
-def auth_page(driver):
-    page = AuthPage(driver)
-    page.driver.get("https://b2c.passport.rt.ru")
-    return page
