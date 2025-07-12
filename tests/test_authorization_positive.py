@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from auth_page import AuthPage
+from pages.auth_page import AuthPage
 
 load_dotenv()
 
@@ -30,13 +30,13 @@ def test_successful_auth_by_email(auth_page):
     auth_page.input_password.send_keys(valid_password_email)
     auth_page.btn_enter.click()
     time.sleep(1)  # если требуется ввести капчу
-    heading = WebDriverWait(auth_page._web_driver, 10).until(
+    heading = WebDriverWait(auth_page._web_driver, 3).until(
         EC.presence_of_element_located((By.XPATH, "//h2"))
     )
     last_name_span = heading.find_element(By.XPATH, "./span[1]")
     first_name_span = heading.find_element(By.XPATH, "./span[2]")
-    assert last_name_span.text == "Мишина"
-    assert first_name_span.text == "Екатерина"
+    assert last_name_span.text == "Давыдова"
+    assert first_name_span.text == "Александра"
     time.sleep(1)
 
 def test_successful_auth_by_phone(auth_page):
@@ -44,13 +44,13 @@ def test_successful_auth_by_phone(auth_page):
     auth_page.input_password.send_keys(valid_password_phone)
     auth_page.btn_enter.click()
     time.sleep(1)  # если требуется ввести капчу
-    heading = WebDriverWait(auth_page._web_driver, 10).until(
+    heading = WebDriverWait(auth_page._web_driver, 3).until(
         EC.presence_of_element_located((By.XPATH, "//h2"))
     )
     last_name_span = heading.find_element(By.XPATH, "./span[1]")
     first_name_span = heading.find_element(By.XPATH, "./span[2]")
-    assert last_name_span.text == "Мишина"
-    assert first_name_span.text == "Екатерина"
+    assert last_name_span.text == "Давыдова"
+    assert first_name_span.text == "Александра"
     time.sleep(1)
 
 def test_successful_auth_by_login(auth_page):
@@ -59,10 +59,10 @@ def test_successful_auth_by_login(auth_page):
     auth_page.input_password.send_keys(valid_password_email)
     auth_page.btn_enter.click()
     time.sleep(1)  # если требуется ввести капчу
-    heading = WebDriverWait(auth_page._web_driver, 10).until(
+    heading = WebDriverWait(auth_page._web_driver, 3).until(
         EC.presence_of_element_located((By.XPATH, "//h2"))
     )
     last_name_span = heading.find_element(By.XPATH, "./span[1]")
     first_name_span = heading.find_element(By.XPATH, "./span[2]")
-    assert last_name_span.text == "Мишина"
-    assert first_name_span.text == "Екатерина"
+    assert last_name_span.text == "Давыдова"
+    assert first_name_span.text == "Александра"
