@@ -110,12 +110,8 @@ class WebElement(object):
 
     def send_keys(self, keys, wait=2):
         """ Send keys to the element. """
-        if keys is None:
-            raise ValueError("Keys cannot be None")
-        try:
-            keys = keys.replace('\n', '\ue007')
-        except Exception as e:
-            self._web_driver.save_screenshot("error.png")
+
+        keys = keys.replace('\n', '\ue007')
 
         element = self.find()
 
